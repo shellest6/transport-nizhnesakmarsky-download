@@ -1,0 +1,16 @@
+name: Publish Android APK
+on:
+  push:
+    tags:
+      - 'v*'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/Transport-Nizhnesakmarsky-Android.apk
+          generate_release_notes: true
